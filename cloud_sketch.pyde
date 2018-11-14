@@ -1,6 +1,10 @@
 # while loop
 # increase variable
 #use draw() for animation
+cloud_x = 0
+cloud_y = 200
+
+
 def setup():
     size (640, 480)
 
@@ -8,10 +12,6 @@ def setup():
 def draw_cloud(x,y): 
     
     noStroke()
-    if x >= 640:
-        x = 0
-    background(230, 153, 0)
-    x += 5
     fill(250, 250, 250)
     ellipse(x, y/ 5, 50 , 50 )
     ellipse (x + 35, y / 5 , 70 , 50)
@@ -27,7 +27,15 @@ def draw_ground():
 
 def draw():
     
-    draw_cloud(0, 200)
+    global cloud_x
+    
+    # update cloud
+    if cloud_x >= 640:
+        cloud_x = 0
+    cloud_x += 5
+    
+    background(230, 153, 0)
+    draw_cloud(cloud_x, 200)
     draw_ground()
     
     
